@@ -1,0 +1,11 @@
+package com.bookrec.repository;
+
+import com.bookrec.model.Book;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+import java.util.UUID;
+
+public interface BookRepository extends JpaRepository<Book, UUID> {
+    List<Book> findByGenre(String genre);
+    List<Book> findByTitleContainingIgnoreCase(String title);
+}
