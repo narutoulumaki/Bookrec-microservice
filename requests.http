@@ -1,0 +1,35 @@
+### 1. Sign Up
+POST http://localhost:8080/auth/signup
+Content-Type: application/json
+
+{
+  "name": "Test User",
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### 2. Login (Get Token)
+# @name login
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### 3. Add a Book (Requires Token)
+# Copy the token from the login response and replace YOUR_TOKEN_HERE
+POST http://localhost:8080/books/add
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+{
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "genre": "Classic"
+}
+
+### 4. Search Books (Requires Token)
+GET http://localhost:8080/books/search?title=Gatsby
+Authorization: Bearer YOUR_TOKEN_HERE
